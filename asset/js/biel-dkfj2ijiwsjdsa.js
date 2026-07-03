@@ -198,6 +198,141 @@ const pageData = [
     thema: "e-commerce",
     url: "lp/slot9.html",
     date: "2026-05-22" // New field
+  },
+  {
+    name: "Togel",
+    type: "Landing Page",
+    niche: "Togel",
+    thema: "e-commerce",
+    url: "lp/toto12.html",
+    date: "2026-06-02" // New field
+  },
+  {
+    name: "AMP TOGEL RESPONSIVE",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/togel.html",
+    date: "2026-06-02" // New field
+  },
+  {
+    name: "AMP APK SLOT",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/menu.html",
+    date: "2026-06-04" // New field
+  },
+  {
+    name: "Kompas.com",
+    type: "Landing Page",
+    niche: "Togel",
+    thema: "News",
+    url: "lp/kompas.html",
+    date: "2026-06-05" // New field
+  },
+  {
+    name: "Slot Gacor 2",
+    type: "Landing Page",
+    niche: "Slot",
+    thema: "Money Site",
+    url: "lp/slot11.html",
+    date: "2026-06-07" // New field
+  },
+  {
+    name: "AMP Provider",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/provider.html",
+    date: "2026-06-08" // New field
+  },
+  {
+    name: "Red Clean",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/clean.html",
+    date: "2026-06-09" // New field
+  },
+  {
+    name: "Samsung Slot Gacor",
+    type: "Landing Page",
+    niche: "Slot",
+    thema: "Product",
+    url: "lp/slot12.html",
+    date: "2026-06-12" // New field
+  },
+  {
+    name: "lrmautomobiles",
+    type: "Landing Page",
+    niche: "Slot",
+    thema: "Product",
+    url: "lp/slot13.html",
+    date: "2026-06-12" // New field
+  },
+  {
+    name: "SMARTPHONE",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/smartphone.html",
+    date: "2026-06-15" // New field
+  },
+  {
+    name: "Brand",
+    type: "Landing Page",
+    niche: "Slot",
+    thema: "Brand",
+    url: "lp/deskriptif1.html",
+    date: "2026-06-18" // New field
+  },
+  {
+    name: "Brand 2",
+    type: "Landing Page",
+    niche: "Slot",
+    thema: "Brand",
+    url: "lp/deskriptif2.html",
+    date: "2026-06-19" // New field
+  },
+  {
+    name: "Simples",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/simpel.html",
+    date: "2026-06-24" // New field
+  },
+  {
+    name: "Artikel",
+    type: "Landing Page",
+    niche: "Togel",
+    thema: "Artikel",
+    url: "lp/artikel1.html",
+    date: "2026-06-24" // New field
+  },
+  {
+    name: "Full Size",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/fullsize.html",
+    date: "2026-06-25" // New field
+  },
+  {
+    name: "RED IG",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/social-media.html",
+    date: "2026-06-28" // New field
+  },
+  {
+    name: "DEMO SLOT",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/demo.html",
+    date: "2026-06-29" // New field
   }
-  
 ];
