@@ -232,7 +232,7 @@
           const cardsHtml = displayData
             .map((item) => {
               const nicheClass = `card-niche-${item.niche.toLowerCase()}`;
-              // Selalu ambil dari GitHub, bukan dari file lokal
+             
               const fullUrl = `https://bielkoi.github.io/page-template/${item.url}`;
               // Thumbnail via WordPress mShots (gratis, tanpa akun)
               const thumbUrl = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(fullUrl)}?w=600&h=400`;
