@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <title>Template Gallery | G.A</title>
+    <link
+      rel="shortcut icon"
+      href="https://bielkoi.github.io/bielkoi-asset/img/png/b-logo.png"
+      type="image/png"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://bielkoi.github.io/bielkoi-asset/css/biels-dkfj2ijiwsjdsa.css"
+    />
+  </head>
+  <body class="bg-black text-white">
+    <nav class="navbar navbar-expand-lg border-bottom border-secondary py-3">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand fw-black letter-spacing-2" href="#">
+          <span class="text-primary">GALLERY LP & AMP</span>
+        </a>
+        <div class="ms-auto d-flex align-items-center">
+          <span
+            class="badge bg-dark border border-secondary text-light py-2 px-3"
+          >
+            <span class="system-status-dot me-2"></span>SYSTEM_ONLINE
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-fluid p-4">
+      <div class="search-container mb-5">
+        <div class="row align-items-center g-3">
+          <div class="col-md-4">
+            <div class="input-group search-wrapper">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input
+                type="text"
+                id="search-input"
+                class="form-control"
+                placeholder="SEARCH_DATABASE..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="col-md-8 text-md-end">
+            <div
+              class="filter-group d-flex gap-2 justify-content-md-end flex-wrap"
+            >
+              <button class="filter-btn active" data-filter="ALL">ALL</button>
+              <button class="filter-btn" data-filter="TOGEL">TOGEL</button>
+              <button class="filter-btn" data-filter="SLOT">SLOT</button>
+              <button class="filter-btn" data-filter="AMP">AMP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="project-grid" class="row g-4"></div>
+
+      <div id="load-more-container" class="col-12 text-center mt-5 mb-5 d-none">
+        <button
+          id="btn-load-more"
+          class="filter-btn py-3 px-5  text-danger"
+          style="
+            border: 1px solid rgba(225, 29, 72, 0.4);
+            background: rgba(15, 23, 42, 0.8);
+          "
+        >
+          <i class="bi bi-arrow-clockwise me-2"></i>Muat Lagi
+        </button>
+      </div>
+    </main>
+
+    <footer class="simple-footer">
+      <div class="container-fluid px-4">
+        <div class="footer-wrap">
+          <div class="footer-section">
+            <span class="system-status-dot"></span>
+            <span id="footer-date" class="footer-meta">2026-04-16</span>
+          </div>
+          <div class="footer-copyright d-none d-lg-block">
+            COPYRIGHT © 2026 <span class="text-white">| [BIEL]</span>
+          </div>
+          <div class="footer-section">
+            <span id="footer-clock" class="footer-clock">00:00:00</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="preview-modal" class="terminal-modal">
+      <div class="modal-backdrop-blur"></div>
+      <div class="modal-content-wrapper">
+        <div class="modal-toolbar">
+          <div class="toolbar-left">
+            <span class="status-dot blink"></span>
+            <span id="modal-project-name">PROJECT_PREVIEW</span>
+          </div>
+          <div class="toolbar-right">
+            <div class="view-toggle">
+              <button class="modal-ctrl-btn view-btn active" data-view="desktop" title="Tampilan Desktop">
+                <i class="bi bi-display"></i>
+              </button>
+              <button class="modal-ctrl-btn view-btn" data-view="mobile" title="Tampilan Mobile">
+                <i class="bi bi-phone"></i>
+              </button>
+            </div>
+            <button class="modal-ctrl-btn" id="close-modal">
+              <i class="bi bi-x-lg"></i> CLOSE_ESC
+            </button>
+          </div>
+        </div>
+        <div class="modal-body-frame">
+          <iframe id="fullscreen-iframe" src=""></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://bielkoi.github.io/bielkoi-asset/js/biel-dkfj2ijiwsjdsa.js"></script>
+    <script>
+      // 1. Toast & Copy Functions
+      function showToast(message) {
+        $(".terminal-toast").remove();
+        const toastHtml = `<div class="terminal-toast"><div class="terminal-toast-msg"><div class="terminal-toast-title">SYSTEM_NOTIFICATION</div><div class="terminal-toast-content">${message}</div></div></div>`;
+        $("body").append($(toastHtml));
+        setTimeout(() => $(".terminal-toast").addClass("show"), 100);
+        setTimeout(() => {
+          $(".terminal-toast").removeClass("show");
+          setTimeout(() => $(".terminal-toast").remove(), 400);
+        }, 3000);
+      }
+
+      window.copyToClipboard = function (text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => showToast("LINK_COPIED"))
+          .catch(() => showToast("COPY_FAILED"));
+      };
+
+      $(document).ready(function () {
+        let currentSearchTerm = "";
+        let currentNicheFilter = "ALL";
+        let visibleItems = 8;
+        let filteredData = [];
+
+        // Cache selektor sekali (tidak di-query ulang tiap render)
+        const $grid = $("#project-grid");
+        const $loadMoreCont = $("#load-more-container");
+
+        window.downloadAsset = function (url, filename) {
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute(
+            "download",
+            filename.replace(/\s+/g, "_").toUpperCase() + ".html",
+          );
+          link.target = "_blank";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        };
+
+        window.openPreview = function (url, name, niche) {
+          $("#modal-project-name").text(name.toUpperCase());
+          $("#fullscreen-iframe").attr("src", url);
+          // AMP -> mulai dari tampilan mobile, selain itu desktop
+          const view = (niche || "").toUpperCase() === "AMP" ? "mobile" : "desktop";
+          $(".modal-body-frame").toggleClass("mobile-view", view === "mobile");
+          $(".view-btn").removeClass("active");
+          $('.view-btn[data-view="' + view + '"]').addClass("active");
+          $("#preview-modal").addClass("active");
+          $("body").css("overflow", "hidden");
+        };
+
+        // Toggle tampilan Desktop / Mobile di dalam modal
+        $(document).on("click", ".view-btn", function () {
+          $(".view-btn").removeClass("active");
+          $(this).addClass("active");
+          $(".modal-body-frame").toggleClass(
+            "mobile-view",
+            $(this).data("view") === "mobile",
+          );
+        });
+
+        $("#close-modal").on("click", function () {
+          $("#preview-modal").removeClass("active");
+          $("#fullscreen-iframe").attr("src", "");
+          $("body").css("overflow", "auto");
+        });
+
+        function renderCards(isLoadMore = false) {
+          if (!isLoadMore) $grid.empty();
+
+          const startIndex = isLoadMore ? $(".review-card").length : 0;
+          const displayData = filteredData.slice(startIndex, visibleItems);
+
+          if (filteredData.length === 0) {
+            $grid.html(
+              '<div class="col-12 text-center py-5 text-secondary">' +
+                '<i class="bi bi-database-x d-block mb-3" style="font-size:2.5rem;opacity:.5"></i>' +
+                '<div class="fw-bold text-primary" style="letter-spacing:2px">NO_ASSETS_FOUND</div>' +
+                '<div class="small mt-2" style="opacity:.6">// coba ubah kata kunci atau filter</div>' +
+              "</div>",
+            );
+            $loadMoreCont.addClass("d-none");
+            return;
+          }
+
+          // Bangun semua kartu jadi satu string, lalu append SEKALI (1x reflow)
+          const cardsHtml = displayData
+            .map((item) => {
+              const nicheClass = `card-niche-${item.niche.toLowerCase()}`;
+              // Selalu ambil dari GitHub, bukan dari file lokal
+              const fullUrl = `https://bielkoi.github.io/page-template/${item.url}`;
+              // Thumbnail via WordPress mShots (gratis, tanpa akun)
+              const thumbUrl = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(fullUrl)}?w=600&h=400`;
+              return `
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex animate-in">
+                <div class="review-card w-100 ${nicheClass}">
+                  <div class="niche-tag">${item.niche}</div>
+                  <div class="thema-tag">${item.thema}</div>
+                  <div class="preview-window" onclick="openPreview('${fullUrl}', '${item.name}', '${item.niche}')">
+                    <div class="preview-loader"></div>
+                    <img class="preview-img" src="${thumbUrl}" loading="lazy" alt="${item.name}" />
+                    <div class="preview-overlay"><span class="preview-btn">[ PREVIEW ]</span></div>
+                  </div>
+                  <div class="card-body">
+                    <div class="item-name text-truncate">${item.name}</div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                      <div class="item-type-label">${item.type}</div>
+                      <div class="item-date-label">${item.date}</div>
+                    </div>
+                    <div class="card-actions d-flex flex-column gap-2">
+                      <div class="d-flex gap-2">
+                        <button onclick="openPreview('${fullUrl}', '${item.name}', '${item.niche}')" class="btn-action btn-main flex-grow-1">PREVIEW</button>
+                        <button onclick="copyToClipboard('${fullUrl}')" class="btn-action px-3"><i class="bi bi-link-45deg"></i></button>
+                      </div>
+                      <button onclick="downloadAsset('${fullUrl}', '${item.name}')" class="btn-action w-100">
+                          <i class="bi bi-download me-2"></i> DOWNLOAD HTML
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>`;
+            })
+            .join("");
+
+          $grid.append(cardsHtml);
+          setupThumbs();
+
+          $loadMoreCont.toggleClass(
+            "d-none",
+            visibleItems >= filteredData.length,
+          );
+        }
+
+        // mShots membalas gambar "loading" (logo WordPress) dulu, lalu screenshot
+        // asli siap beberapa detik kemudian. Kita sembunyikan gambar di balik spinner
+        // sendiri & baru tampilkan saat screenshot asli siap (lebar ~600px sesuai
+        // permintaan; placeholder loading-nya lebih kecil).
+        function setupThumbs() {
+          $(".preview-img").each(function () {
+            if (this.dataset.init) return; // setup sekali per gambar
+            this.dataset.init = "1";
+            const img = this;
+            const base = img.src;
+            let attempt = 0;
+            const MAX = 6;
+
+            const reveal = () => {
+              img.classList.add("loaded");
+              const loader = img.parentNode.querySelector(".preview-loader");
+              if (loader) loader.style.display = "none";
+            };
+            const reload = () => {
+              if (attempt >= MAX) {
+                reveal(); // fallback: tampilkan apa adanya agar tidak macet di spinner
+                return;
+              }
+              attempt++;
+              setTimeout(() => {
+                img.src = base + "&retry=" + attempt;
+              }, 3000);
+            };
+            const onLoad = () => {
+              if (img.naturalWidth >= 550) reveal(); // screenshot asli sudah siap
+              else reload(); // masih placeholder -> coba lagi, spinner tetap tampil
+            };
+
+            img.addEventListener("load", onLoad);
+            img.addEventListener("error", reload);
+            // jika sudah selesai dimuat sebelum listener terpasang (dari cache)
+            if (img.complete && img.naturalWidth) onLoad();
+          });
+        }
+
+        function applyFilters() {
+          visibleItems = 8;
+          filteredData = pageData
+            .filter((item) => {
+              const matchesSearch =
+                item.name
+                  .toLowerCase()
+                  .includes(currentSearchTerm.toLowerCase()) ||
+                item.thema
+                  .toLowerCase()
+                  .includes(currentSearchTerm.toLowerCase());
+              const matchesNiche =
+                currentNicheFilter === "ALL" ||
+                item.niche.toUpperCase() === currentNicheFilter;
+              return matchesSearch && matchesNiche;
+            })
+            .sort((a, b) => new Date(b.date) - new Date(a.date));
+          renderCards(false);
+        }
+
+        $("#btn-load-more").on("click", function () {
+          visibleItems += 8;
+          renderCards(true);
+        });
+
+        $("#search-input").on("input", function () {
+          currentSearchTerm = $(this).val();
+          applyFilters();
+        });
+        $(document).on("click", ".filter-btn:not(#btn-load-more)", function () {
+          $(".filter-btn").removeClass("active");
+          $(this).addClass("active");
+          currentNicheFilter = $(this).data("filter");
+          applyFilters();
+        });
+
+        applyFilters();
+      });
+
+       // System Clock
+        function updateTime() {
+          const now = new Date();
+          $("#footer-clock").text(now.toTimeString().split(" ")[0]);
+          $("#footer-date").text(now.toISOString().split("T")[0]);
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
