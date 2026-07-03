@@ -1,0 +1,655 @@
+<!doctype html>
+<html ⚡ lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>KOITOTO - Official Portal</title>
+    <link rel="canonical" href="https://koitoto.com/index.html" />
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      }
+      @-webkit-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-moz-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-ms-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-o-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+    </style>
+    <noscript
+      ><style amp-boilerplate>
+        body {
+          -webkit-animation: none;
+          -moz-animation: none;
+          -ms-animation: none;
+          animation: none;
+        }
+      </style></noscript
+    >
+
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <style amp-custom>
+      /* --- CORE GRID LOGIC --- */
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
+      .container {
+        width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+        max-width: 1140px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+      }
+      [class*="col-"] {
+        position: relative;
+        width: 100%;
+        padding: 0 15px;
+        min-height: 1px;
+      }
+      .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      @media (min-width: 768px) {
+        .col-md-6 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+      }
+
+      /* --- THEME COLORS --- */
+      :root {
+        --neon-orange: #ff6a00;
+        --neon-red: #ff0033;
+        --star-gold: #ffcc00;
+        --glass-bg: rgba(25, 25, 25, 0.8);
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          #050505 0%,
+          #3b3b3b 50%,
+          #050505 100%
+        );
+        background-attachment: fixed;
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 50px 0 100px; /* Increased bottom padding for sticky menu */
+      }
+
+      .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 0, 0, 0.4);
+        padding: 25px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+      }
+
+      /* --- ARTICLE STYLING --- */
+      .mini-article {
+        color: #ccc;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin: 10px 0 15px;
+        border-left: 2px solid var(--neon-red);
+        padding-left: 15px;
+      }
+
+      /* --- RATING BOX --- */
+      .rating-box {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 15px;
+        margin: 15px 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .rating-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+      .rating-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #ddd;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .stars {
+        color: var(--star-gold);
+        font-size: 0.8rem;
+        text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+      }
+
+      /* --- MINI CARD WITH RUNNING BORDER --- */
+      .feature-list-horizontal {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 20px 0;
+      }
+      .mini-card-h {
+        position: relative;
+        flex: 1 1 calc(33.33% - 10px);
+        min-width: 90px;
+        height: 75px;
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .mini-card-h::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          transparent,
+          transparent,
+          transparent,
+          var(--neon-red)
+        );
+        animation: rotate 3s linear infinite;
+        z-index: -2;
+      }
+      .mini-card-h::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        background: rgba(35, 35, 35, 0.9);
+        border-radius: 12px;
+        z-index: -1;
+      }
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .mini-icon {
+        color: var(--neon-orange);
+        font-size: 1.2rem;
+        margin-bottom: 2px;
+      }
+      .mini-text {
+        font-size: 0.65rem;
+        font-weight: 800;
+        color: #fff;
+        text-transform: uppercase;
+      }
+
+      /* --- BUTTONS --- */
+      .btn {
+        display: block;
+        text-align: center;
+        padding: 16px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 800;
+        text-transform: uppercase;
+        transition: 0.3s;
+        letter-spacing: 1px;
+      }
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--neon-orange),
+          var(--neon-red)
+        );
+        color: #fff;
+        margin-bottom: 12px;
+        box-shadow: 0 8px 20px rgba(255, 69, 0, 0.3);
+      }
+      .btn-outline {
+        border: 1px solid var(--neon-red);
+        color: var(--neon-red);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.2);
+      }
+      .img-frame {
+        padding: 5px;
+        background: rgba(255, 106, 0, 0.15);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 106, 0, 0.3);
+      }
+
+      /* --- PREMIUM FLOATING STICKY MENU --- */
+      .sticky-menu {
+        position: fixed;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        max-width: 500px;
+        height: 70px;
+        background: rgba(15, 15, 15, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 106, 0, 0.3);
+        border-radius: 25px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 9999;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+        padding: 0 10px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      /* Menu grows slightly when any part is hovered */
+      .sticky-menu:hover {
+        border-color: var(--neon-red);
+        background: rgba(20, 20, 20, 0.95);
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 1),
+          0 0 15px rgba(255, 106, 0, 0.15);
+      }
+
+      .menu-item {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        flex: 1;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .menu-item .icon {
+        font-size: 1.4rem;
+        margin-bottom: 3px;
+        transition:
+          transform 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* --- THE HOVER EFFECT --- */
+      .menu-item:hover {
+        color: #fff;
+      }
+
+      .menu-item:hover .icon {
+        color: var(--neon-orange);
+        transform: translateY(-8px) scale(1.2); /* Icon pops up and grows */
+        filter: drop-shadow(0 0 10px rgba(255, 106, 0, 0.5));
+      }
+
+      /* Keep the active button glowing even when not hovered */
+      .menu-item.active-btn {
+        color: #fff;
+      }
+
+      .menu-item.active-btn .icon {
+        color: var(--neon-red);
+        transform: translateY(-5px);
+        filter: drop-shadow(0 0 12px var(--neon-red));
+      }
+
+      .menu-item.active-btn::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        width: 15px;
+        height: 3px;
+        background: var(--neon-red);
+        border-radius: 10px;
+        box-shadow: 0 0 10px var(--neon-red);
+      }
+      /* --- HORIZONTAL SERVER CARDS --- */
+      .vip-section-title {
+        text-align: center;
+        color: var(--star-gold);
+        font-weight: 900;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+        text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+      }
+      .server-grid-centered {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px auto;
+        width: 100%;
+      }
+
+      .server-card-row {
+        flex: 1 1 300px;
+        background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+        border: 1px solid rgba(255, 106, 0, 0.4); /* Slightly stronger base border */
+        border-radius: 16px;
+        padding: 15px 20px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        transition: all 0.3s ease;
+        position: relative;
+        /* Apply the pulse animation */
+        animation: borderPulse 3s infinite ease-in-out;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+      }
+
+      .server-card-row:hover {
+        animation: none;
+        background: linear-gradient(145deg, #222 0%, #111 100%);
+        border-color: var(--neon-red);
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba(255, 106, 0, 0.3);
+      }
+      /* THE PULSE ANIMATION */
+      @keyframes borderPulse {
+        0% {
+          border-color: rgba(255, 106, 0, 0.3);
+          box-shadow: 0 0 5px rgba(255, 106, 0, 0.1);
+        }
+        50% {
+          border-color: rgba(255, 106, 0, 0.8);
+          box-shadow: 0 0 15px rgba(255, 106, 0, 0.2);
+        }
+        100% {
+          border-color: rgba(255, 106, 0, 0.3);
+          box-shadow: 0 0 5px rgba(255, 106, 0, 0.1);
+        }
+      }
+
+      .latency-dot {
+        width: 6px;
+        height: 6px;
+        background: #00ff88;
+        border-radius: 50%;
+        display: inline-block;
+        /* Adding a faster pulse to the green dot itself */
+        animation: dotPulse 1.5s infinite;
+      }
+
+      @keyframes dotPulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.4);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .flag-side {
+        flex-shrink: 0;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        filter: grayscale(20%); /* Modern muted look, pops on hover */
+        transition: 0.3s;
+      }
+
+      .server-card-row:hover .flag-side {
+        filter: grayscale(0%);
+        border-color: var(--neon-red);
+      }
+
+      .server-title-row {
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .server-latency {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #00ff88; /* Neon Green stays for contrast */
+        margin-top: 3px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      @media (max-width: 768px) {
+        .server-card-row {
+          flex: 0 0 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="glass-card">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="img-frame">
+                  <amp-img
+                    src="https://imgmahasuhu.io/images/2026/04/23/resmi-togel-situs.jpeg"
+                    width="600"
+                    height="600"
+                    layout="responsive"
+                    alt="KOITOTO Asset"
+                  ></amp-img>
+                </div>
+              </div>
+              <div
+                class="col-md-6"
+                style="
+                  padding-left: 25px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                "
+              >
+                <h2
+                  style="
+                    color: var(--neon-red);
+                    margin: 0;
+                    font-weight: 900;
+                    letter-spacing: 1.5px;
+                    text-transform: uppercase;
+                  "
+                >
+                  KOITOTO SITUS RESMI
+                </h2>
+                <div class="mini-article">
+                  KOITOTO hadir sebagai platform terpercaya dengan sistem
+                  integrasi tercanggih. Kami menjamin keamanan data member
+                  dengan enkripsi SSL terbaru, memberikan pengalaman bermain
+                  yang mulus.
+                </div>
+                <a href="#" class="btn btn-primary">Daftar Sekarang</a>
+                <a href="#" class="btn btn-outline">Member Login</a>
+                <div class="rating-box">
+                  <div class="rating-row">
+                    <span class="rating-label">Winrate Member</span
+                    ><span class="stars">★★★★★</span>
+                  </div>
+                  <div class="rating-row">
+                    <span class="rating-label">Proses Deposit</span
+                    ><span class="stars">★★★★★</span>
+                  </div>
+                  <div class="rating-row">
+                    <span class="rating-label">Proses Withdraw</span
+                    ><span class="stars">★★★★★</span>
+                  </div>
+                  <div class="rating-row">
+                    <span class="rating-label">Pelayanan CS</span
+                    ><span class="stars">★★★★★</span>
+                  </div>
+                </div>
+                <div class="feature-list-horizontal">
+                  <div class="mini-card-h">
+                    <span class="mini-icon">⚡</span
+                    ><span class="mini-text">Cepat</span>
+                  </div>
+                  <div class="mini-card-h">
+                    <span class="mini-icon">🛡️</span
+                    ><span class="mini-text">Aman</span>
+                  </div>
+                  <div class="mini-card-h">
+                    <span class="mini-icon">🏆</span
+                    ><span class="mini-text">Menang</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <h3 class="vip-section-title">Link Alternatif SERVER VIP</h3>
+        </div>
+      </div>
+
+      <div class="server-grid-centered">
+        <a href="#" class="server-card-row">
+          <div class="flag-side">
+            <amp-img
+              src="https://flagcdn.com/w80/sg.png"
+              width="45"
+              height="32"
+              layout="fixed"
+              alt="Singapore"
+            ></amp-img>
+          </div>
+          <div class="server-info-side">
+            <span class="server-title-row">Server VIP Singapore</span>
+            <span class="server-latency"
+              ><span class="latency-dot"></span> Latency: 7ms</span
+            >
+          </div>
+        </a>
+
+        <a href="#" class="server-card-row">
+          <div class="flag-side">
+            <amp-img
+              src="https://flagcdn.com/w80/th.png"
+              width="45"
+              height="32"
+              layout="fixed"
+              alt="Thailand"
+            ></amp-img>
+          </div>
+          <div class="server-info-side">
+            <span class="server-title-row">Server VIP Thailand</span>
+            <span class="server-latency"
+              ><span class="latency-dot"></span> Latency: 12ms</span
+            >
+          </div>
+        </a>
+
+        <a href="#" class="server-card-row">
+          <div class="flag-side">
+            <amp-img
+              src="https://flagcdn.com/w80/ph.png"
+              width="45"
+              height="32"
+              layout="fixed"
+              alt="Philippines"
+            ></amp-img>
+          </div>
+          <div class="server-info-side">
+            <span class="server-title-row">Server VIP Philippines</span>
+            <span class="server-latency"
+              ><span class="latency-dot"></span> Latency: 10ms</span
+            >
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="sticky-menu">
+      <a href="#" class="menu-item active-btn">
+        <span class="icon">📈</span>
+        <span>BERANDA</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">💎</span>
+        <span>PROMO</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">🔥</span>
+        <span>DAFTAR</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span class="icon">👤</span>
+        <span>LOGIN</span>
+      </a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,486 @@
+<!doctype html>
+<html ⚡ lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <title>KOITOTO | Premium Gear</title>
+    <link rel="canonical" href="self.html" />
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      }
+      @-webkit-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-moz-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-ms-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-o-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+    </style>
+    <noscript
+      ><style amp-boilerplate>
+        body {
+          -webkit-animation: none;
+          -moz-animation: none;
+          -ms-animation: none;
+          animation: none;
+        }
+      </style></noscript
+    >
+
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <style amp-custom>
+      :root {
+        --brand-green: #004832;
+        --brand-success: #00aa5b;
+        --yugi-gold: #c5a15a;
+        --yugi-brown: #d1894c;
+        --yugi-red: #d40000;
+        --speed: 0.3s;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #121212;
+        font-family: "Segoe UI", sans-serif;
+      }
+      .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      /* HEADER */
+      .amp-header {
+        height: 4vh;
+       
+        padding: 12px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 100;
+      }
+
+      /* RUNNING LIGHT ANIMATION */
+      .running-light {
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: #770303;
+        overflow: hidden;
+      }
+      .header-light {
+        bottom: 0;
+      }
+      .footer-light {
+        top: 0;
+      }
+
+      .running-light::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--yugi-red),
+          #fff,
+          var(--yugi-red),
+          transparent
+        );
+        animation: runlight 3s infinite linear;
+      }
+
+      @keyframes runlight {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .announcement {
+        background: var(--brand-green);
+        color: #fff;
+        font-size: 11px;
+        text-align: center;
+        padding: 6px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      /* MAIN AREA */
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        perspective: 1500px;
+        padding: 20px;
+      }
+
+      .card-anchor {
+        position: relative;
+        width: 300px;
+        height: 430px;
+        transform-style: preserve-3d;
+        margin-bottom: 25px;
+      }
+
+      .trigger {
+        position: absolute;
+        width: 33.33%;
+        height: 33.33%;
+        z-index: 50;
+      }
+      .t1 {
+        top: 0;
+        left: 0;
+      }
+      .t2 {
+        top: 0;
+        left: 33.33%;
+      }
+      .t3 {
+        top: 0;
+        left: 66.66%;
+      }
+      .t4 {
+        top: 33.33%;
+        left: 0;
+      }
+      .t5 {
+        top: 33.33%;
+        left: 33.33%;
+      }
+      .t6 {
+        top: 33.33%;
+        left: 66.66%;
+      }
+      .t7 {
+        top: 66.66%;
+        left: 0;
+      }
+      .t8 {
+        top: 66.66%;
+        left: 33.33%;
+      }
+      .t9 {
+        top: 66.66%;
+        left: 66.66%;
+      }
+
+      .card-body {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://imagekoi.io/images/2026/03/23/fother-web.webp");
+        border: 6px solid #8f6200;
+        border-radius: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
+        transition: transform var(--speed) cubic-bezier(0.1, 0.8, 0.2, 1);
+        transform-style: preserve-3d;
+        pointer-events: none;
+      }
+
+      /* 3D MOVEMENT */
+      .t1:hover ~ .card-body {
+        transform: rotateX(22deg) rotateY(-22deg) scale(1.02);
+      }
+      .t2:hover ~ .card-body {
+        transform: rotateX(22deg) rotateY(0deg) scale(1.02);
+      }
+      .t3:hover ~ .card-body {
+        transform: rotateX(22deg) rotateY(22deg) scale(1.02);
+      }
+      .t4:hover ~ .card-body {
+        transform: rotateX(0deg) rotateY(-22deg) scale(1.05);
+      }
+      .t5:hover ~ .card-body {
+        transform: rotateX(0deg) rotateY(0deg) scale(1.1);
+      }
+      .t6:hover ~ .card-body {
+        transform: rotateX(0deg) rotateY(22deg) scale(1.05);
+      }
+      .t7:hover ~ .card-body {
+        transform: rotateX(-22deg) rotateY(-22deg) scale(1.02);
+      }
+      .t8:hover ~ .card-body {
+        transform: rotateX(-22deg) rotateY(0deg) scale(1.02);
+      }
+      .t9:hover ~ .card-body {
+        transform: rotateX(-22deg) rotateY(22deg) scale(1.02);
+      }
+
+      /* BUTTONS */
+      .button-group {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 100;
+      }
+      .btn {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 15px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      /* --- ENHANCED GLOWING PULSE --- */
+      .btn-daftar {
+        
+        color: #e2e2e2;
+        border: none;
+        position: relative;
+        z-index: 1;
+        /* Glow Pulse Animation */
+        animation: glowing-pulse 4s infinite;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .btn-login {
+       
+        color: #e2e2e2;
+        box-shadow: 0 4px 15px rgba(170, 0, 0, 0.4);
+      }
+
+      @keyframes glowing-pulse {
+        0% {
+          transform: scale(1);
+          box-shadow:
+            0 0 0 0 rgba(0, 68, 170, 0.7),
+            0 0 10px rgba(170, 68, 0, 0.5);
+        }
+        50% {
+          transform: scale(1.05);
+          /* The "Glow" spread */
+          box-shadow:
+            0 0 0 15px rgba(170, 54, 0, 0),
+            0 0 25px rgba(255, 0, 0, 0.8);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow:
+            0 0 0 0 rgba(170, 0, 0, 0),
+            0 0 10px rgba(170, 0, 0, 0.5);
+        }
+      }
+
+      /* CARD CONTENT */
+      .c-header {
+        background: linear-gradient(#fff, #bbb);
+        border: 2px solid #333;
+        padding: 4px 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .c-header h1 {
+        color: #000;
+        margin: 0;
+        font-size: 13px;
+        font-weight: 900;
+        font-family: serif;
+      }
+      .c-attr {
+        background: #800000;
+        color: #fff;
+        font-size: 9px;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-weight: bold;
+        border: 1px solid #fff;
+      }
+      .c-stars {
+        color: #ffcc00;
+        font-size: 12px;
+        margin: 4px 0;
+        text-shadow: 1px 1px 1px #000;
+      }
+      .c-art {
+        border: 3px solid #bbbbbb;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+        height: 190px;
+      }
+      .sheen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0) 20%,
+          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0) 80%
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .trigger:hover ~ .card-body .sheen {
+        opacity: 1;
+      }
+      .c-desc {
+        background: #fdf5e6;
+        color: #000;
+        padding: 8px;
+        margin-top: 8px;
+        border: 2px solid #000;
+        font-size: 10px;
+        font-family: serif;
+        min-height: 80px;
+      }
+      .c-stats {
+        text-align: right;
+        font-weight: bold;
+        border-top: 1px solid #000;
+        padding-top: 4px;
+        margin-top: 4px;
+        font-size: 12px;
+      }
+
+      /* FOOTER */
+      .amp-footer {
+        height: 4vh;
+        color: #d4d4d4;
+        
+        padding: 12px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header class="amp-header">
+        <amp-img
+          src="https://imgmahasuhu.io/images/2026/02/25/pakai-bg.gif"
+          width="120"
+          height="34"
+          layout="fixed"
+          alt="Logo"
+        ></amp-img>
+        <div class="running-light header-light"></div>
+      </header>
+
+      <main class="main-content">
+        <div class="card-anchor">
+          <div class="trigger t1"></div>
+          <div class="trigger t2"></div>
+          <div class="trigger t3"></div>
+          <div class="trigger t4"></div>
+          <div class="trigger t5"></div>
+          <div class="trigger t6"></div>
+          <div class="trigger t7"></div>
+          <div class="trigger t8"></div>
+          <div class="trigger t9"></div>
+
+          <div class="card-body">
+            <div class="c-header">
+              <h1>KOITOTO</h1>
+              <div class="c-attr">FIRE</div>
+            </div>
+            <div class="c-stars">★★★★★★★★★★</div>
+            <div class="c-art">
+              <div class="sheen"></div>
+              <amp-img
+                src="https://imgstore.io/images/2026/01/12/opetxxx3.jpeg"
+                width="280"
+                height="190"
+                layout="responsive"
+              ></amp-img>
+            </div>
+            <div class="c-desc">
+              <strong
+                style="
+                  border-bottom: 1px solid #000;
+                  display: block;
+                  margin-bottom: 3px;
+                "
+                >[ TOTO / MACAU ]</strong
+              >
+              <div style="font-style: bold">
+                KOITOTO didukung oleh teknologi modern yang mampu menjaga
+                performa situs toto macau agar tetap responsif di berbagai
+                perangkat.
+              </div>
+              <div class="c-stats">ATK / 9999 DEF / 9999</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <a href="#" class="btn btn-daftar">DAFTAR</a>
+          <a href="#" class="btn btn-login">LOGIN</a>
+        </div>
+      </main>
+
+      <footer class="amp-footer">
+        <div class="running-light footer-light"></div>
+        <div style="font-size: 9px; margin-top: 5px">
+          <b>© 2026 | KOITOTO. Powered by G.A</b>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

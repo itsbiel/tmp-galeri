@@ -1,0 +1,194 @@
+<!doctype html>
+<html ⚡ lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KOITOTO - Premium Glass Portal</title>
+  <link rel="canonical" href="https://koitoto.com/index.html">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+  <style amp-custom>
+    :root {
+      --glass-bg: rgba(20, 20, 20, 0.75);
+      --glass-border: rgba(255, 106, 0, 0.4);
+      --neon-orange: #ff6a00;
+      --neon-red: #ff0033;
+      --text-bright: #ffffff;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0f0f 0%, #3a0000 45%, #6a2e00 100%);
+      background-attachment: fixed;
+      color: var(--text-bright);
+      font-family: 'Inter', -apple-system, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Changed from center to bring content up */
+      min-height: 100vh;
+      padding: 10px 20px; /* Reduced vertical padding */
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      box-sizing: border-box;
+      margin-top: 25px; /* Reduced top margin */
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.1);
+      transition: border 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(255, 106, 0, 0.7);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 106, 0, 0.2);
+    }
+
+    .logo-section {
+      padding: 20px 20px 15px; /* Significantly reduced top and bottom padding */
+      text-align: center;
+    }
+
+    .image-container {
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+      line-height: 0;
+    }
+
+    .image-container amp-img {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.5s ease;
+    }
+
+    .image-container:hover amp-img {
+      transform: scale(1.02);
+    }
+
+    .button-group {
+      padding: 20px 25px 25px; /* Reduced top padding between image and buttons */
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* Tighter gap */
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      padding: 16px; /* Slightly tighter padding */
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-reg {
+      background: linear-gradient(90deg, var(--neon-orange), var(--neon-red));
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(255, 69, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-reg:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(255, 69, 0, 0.6);
+      filter: brightness(1.1);
+    }
+
+    .btn-log {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--neon-orange);
+      border: 1px solid var(--glass-border);
+    }
+
+    .btn-log:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+      border-color: var(--neon-orange);
+      color: #fff;
+    }
+
+    .status-footer {
+      text-align: center;
+      margin-top: 20px; /* Tighter distance to card */
+    }
+
+    .status-text {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 5px;
+    }
+
+    .copyright {
+      font-size: 0.6rem;
+      color: rgba(255, 255, 255, 0.2);
+      letter-spacing: 1px;
+    }
+
+    .pulse {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: #00ff41;
+      border-radius: 50%;
+      margin-right: 5px;
+      box-shadow: 0 0 10px #00ff41;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="glass-card">
+    <div class="logo-section">
+      <amp-img src="https://imgstore.io/images/2025/03/07/KOITOTO.png" 
+        width="180" height="45" layout="fixed" alt="KOITOTO Logo"></amp-img>
+    </div>
+
+    <div class="image-container">
+      <amp-img src="https://imgmahasuhu.io/images/2026/04/20/600-PALING-LENGKAP.jpeg" 
+        width="600" height="600" layout="responsive" alt="KOITOTO Premium"></amp-img>
+    </div>
+
+    <div class="button-group">
+      <a href="https://example.com/daftar" class="btn btn-reg">Daftar Sekarang</a>
+      <a href="https://example.com/login" class="btn btn-log">Member Login</a>
+    </div>
+  </div>
+
+  <div class="status-footer">
+    <div class="status-text">
+      <span class="pulse"></span> System Status: Secured
+    </div>
+    <div class="copyright">
+      &copy; 2026 KOITOTO OFFICIAL &bull; ALL RIGHTS RESERVED
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
