@@ -344,7 +344,7 @@ const pageData = [
     date: "2026-07-04" // New field
   },
   {
-    name: "DEMO SLOT",
+    name: "MOTION",
     type: "AMP",
     niche: "AMP",
     thema: "AMP",
