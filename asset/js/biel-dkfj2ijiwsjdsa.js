@@ -342,5 +342,13 @@ const pageData = [
     thema: "SLOT",
     url: "lp/slot14.html",
     date: "2026-07-04" // New field
+  },
+  {
+    name: "DEMO SLOT",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/motion.html",
+    date: "2026-07-09" // New field
   }
 ];
