@@ -358,5 +358,13 @@ const pageData = [
     thema: "AMP",
     url: "amp/msamp.html",
     date: "2026-07-14" // New field
+  },
+  {
+    name: "GEMEBOT",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/gamebot.html",
+    date: "2026-07-18" // New field
   }
 ];
