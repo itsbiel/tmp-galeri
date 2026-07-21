@@ -33,8 +33,9 @@
   <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
 
   <!-- Font: Chakra Petch untuk UI (techy-humanis), monospace untuk LED -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;800&display=swap">
 
   <!-- Boilerplate CSS AMP -->
   <style amp-boilerplate>
@@ -424,19 +425,12 @@
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 45%),
         linear-gradient(180deg, #ff3b3b 0%, #c40000 100%);
-      position: relative;
-      animation: daftar-pulse 1.4s ease-in-out infinite;
+      animation: daftar-pulse 1s ease-in-out infinite;
     }
-    /* Denyut cahaya untuk menarik perhatian ke tombol DAFTAR */
+    /* Efek besar-kecil untuk menarik perhatian ke tombol DAFTAR */
     @keyframes daftar-pulse {
-      0%, 100% {
-        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 8px 16px rgba(0, 0, 0, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 0 0 rgba(255, 59, 59, 0.6);
-      }
-      50% {
-        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 8px 22px rgba(255, 40, 40, 0.65),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 0 8px rgba(255, 59, 59, 0);
-      }
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.08); }
     }
 
     /* Box artikel terpisah */
@@ -471,7 +465,7 @@
       margin-top: 14px;
       font-size: 11px;
       letter-spacing: 1px;
-      color: rgba(255, 255, 255, 0.5);
+      color: #fff;
     }
 
     /* Hormati preferensi kurangi-gerak: tenangkan animasi ambient */
@@ -520,7 +514,7 @@
       
       <!-- Gambar Tengah AMP -->
       <div class="center-art">
-        <amp-img src="https://imgmahasuhu.io/images/2026/03/31/Bandarslot_88.webp" layout="fill" alt="Slot Gacor KOITOTO"></amp-img>
+        <amp-img src="https://imgmahasuhu.io/images/2026/07/12/Gacor_online1.jpeg" layout="fill" alt="Slot Gacor KOITOTO"></amp-img>
       </div>
 
       <!-- Kotak Lintasan (posisi 0-23) -->
