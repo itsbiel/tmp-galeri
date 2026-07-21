@@ -366,5 +366,13 @@ const pageData = [
     thema: "AMP",
     url: "amp/gamebot.html",
     date: "2026-07-18" // New field
+  },
+  {
+    name: "DING DONG",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/dingdong.html",
+    date: "2026-07-21" // New field
   }
 ];
