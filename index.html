@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
     />
-    <title>Template Gallery | G.A </title>
+    <title>Template Gallery | G.A</title>
     <link
       rel="shortcut icon"
       href="https://itsbiel.github.io/tmp-galeri/asset/img/png/b-logo.png"
@@ -31,6 +31,72 @@
       rel="stylesheet"
       href="https://itsbiel.github.io/tmp-galeri/asset/css/biels-dkfj2ijiwsjdsa.css"
     />
+    <style>
+      /* === PSI score panel === */
+      .psi-slot { min-height: 38px; }
+      .btn-psi-check[disabled] { opacity: 0.6; cursor: wait; }
+      .psi-spin { display: inline-block; animation: psiSpin 1s linear infinite; }
+      @keyframes psiSpin { to { transform: rotate(360deg); } }
+      .psi-panel {
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 6px;
+        padding: 10px 8px 8px;
+        position: relative;
+      }
+      .psi-tabs { display: flex; gap: 6px; margin-bottom: 8px; }
+      .psi-tab {
+        background: transparent;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        color: #94a3b8;
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .psi-tab.active {
+        color: #fff;
+        border-color: rgba(225, 29, 72, 0.6);
+        background: rgba(225, 29, 72, 0.15);
+      }
+      .psi-refresh {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: transparent;
+        border: 0;
+        color: #64748b;
+        cursor: pointer;
+        font-size: 0.75rem;
+        padding: 2px;
+      }
+      .psi-refresh:hover { color: #fff; }
+      .psi-scores { display: flex; justify-content: space-between; gap: 4px; }
+      .psi-score { text-align: center; flex: 1; }
+      .psi-circle {
+        width: 34px;
+        height: 34px;
+        margin: 0 auto 3px;
+        border-radius: 50%;
+        border: 2px solid;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+        font-family: monospace;
+      }
+      .psi-circle.s-good { border-color: #0cce6b; color: #0cce6b; background: rgba(12, 206, 107, 0.08); }
+      .psi-circle.s-avg { border-color: #ffa400; color: #ffa400; background: rgba(255, 164, 0, 0.08); }
+      .psi-circle.s-bad { border-color: #ff4e42; color: #ff4e42; background: rgba(255, 78, 66, 0.08); }
+      .psi-label {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+        color: #94a3b8;
+        text-transform: uppercase;
+      }
+    </style>
   </head>
   <body class="bg-black text-white">
     <nav class="navbar navbar-expand-lg border-bottom border-secondary py-3">
@@ -159,6 +225,144 @@
           .catch(() => showToast("COPY_FAILED"));
       };
 
+      // === PSI (PageSpeed Insights) ===
+      const PSI_API_KEY = "AIzaSyCUaCnRsCRiRUzVkp-RkOjEM9CgGb9PCd0"; // opsional: isi API key Google Cloud utk kuota lebih besar
+      const PSI_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 hari
+      const PSI_CATS = [
+        ["perf", "performance", "PERF"],
+        ["a11y", "accessibility", "A11Y"],
+        ["best", "best-practices", "BEST"],
+        ["seo", "seo", "SEO"],
+      ];
+
+      function psiCacheGet(url) {
+        try {
+          const raw = localStorage.getItem("psi_score::" + url);
+          if (!raw) return null;
+          const data = JSON.parse(raw);
+          if (!data.mobile || !data.desktop) return null;
+          if (Date.now() - data.ts > PSI_TTL_MS) return null;
+          return data;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function psiCacheSet(url, data) {
+        try {
+          localStorage.setItem("psi_score::" + url, JSON.stringify(data));
+        } catch (e) {
+          /* storage penuh/di-block: abaikan, panel tetap tampil sesi ini */
+        }
+      }
+
+      function psiScoreClass(score) {
+        if (score >= 90) return "s-good";
+        if (score >= 50) return "s-avg";
+        return "s-bad";
+      }
+
+      function buildPsiButton() {
+        return '<button class="btn-action w-100 btn-psi-check"><i class="bi bi-speedometer2 me-2"></i>CHECK SCORE</button>';
+      }
+
+      function buildPsiLoading() {
+        return '<button class="btn-action w-100 btn-psi-check" disabled><i class="bi bi-arrow-repeat me-2 psi-spin"></i>SCANNING...</button>';
+      }
+
+      function buildPsiPanel(data, view) {
+        const scores = data[view];
+        const circles = PSI_CATS.map(
+          ([key, , label]) =>
+            '<div class="psi-score"><div class="psi-circle ' +
+            psiScoreClass(scores[key]) +
+            '">' +
+            scores[key] +
+            '</div><div class="psi-label">' +
+            label +
+            "</div></div>",
+        ).join("");
+        return (
+          '<div class="psi-panel">' +
+          '<button class="psi-refresh" title="Cek ulang"><i class="bi bi-arrow-clockwise"></i></button>' +
+          '<div class="psi-tabs">' +
+          '<button class="psi-tab' + (view === "mobile" ? " active" : "") + '" data-psi-view="mobile">MOBILE</button>' +
+          '<button class="psi-tab' + (view === "desktop" ? " active" : "") + '" data-psi-view="desktop">DESKTOP</button>' +
+          "</div>" +
+          '<div class="psi-scores">' + circles + "</div>" +
+          "</div>"
+        );
+      }
+
+      function renderPsiSlot(url) {
+        const cached = psiCacheGet(url);
+        return cached ? buildPsiPanel(cached, "mobile") : buildPsiButton();
+      }
+
+      function fetchPsiStrategy(url, strategy) {
+        const params = new URLSearchParams({ url: url, strategy: strategy });
+        PSI_CATS.forEach(([, id]) =>
+          params.append("category", id.toUpperCase().replace("-", "_")),
+        );
+        if (PSI_API_KEY) params.append("key", PSI_API_KEY);
+        return fetch(
+          "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?" + params,
+        ).then((res) => {
+          if (res.status === 429 || res.status === 403) throw new Error("RATE_LIMITED");
+          if (!res.ok) throw new Error("HTTP_" + res.status);
+          return res.json().then((json) => {
+            const cats = json.lighthouseResult && json.lighthouseResult.categories;
+            if (!cats) throw new Error("NO_RESULT");
+            const out = {};
+            PSI_CATS.forEach(([key, id]) => {
+              out[key] = Math.round((cats[id].score || 0) * 100);
+            });
+            return out;
+          });
+        });
+      }
+
+      function runPsiCheck($slot) {
+        const url = $slot.data("url");
+        $slot.html(buildPsiLoading());
+        Promise.all([
+          fetchPsiStrategy(url, "mobile"),
+          fetchPsiStrategy(url, "desktop"),
+        ])
+          .then(([mobile, desktop]) => {
+            const data = { mobile: mobile, desktop: desktop, ts: Date.now() };
+            psiCacheSet(url, data);
+            // update SEMUA slot dgn url sama (card bisa dirender > 1x)
+            $('.psi-slot[data-url="' + url + '"]').html(buildPsiPanel(data, "mobile"));
+          })
+          .catch((err) => {
+            showToast(
+              err.message === "RATE_LIMITED"
+                ? "RATE_LIMITED // coba lagi nanti"
+                : "SCAN_FAILED // coba lagi nanti",
+            );
+            $slot.html(buildPsiButton());
+          });
+      }
+
+      $(document).on("click", ".btn-psi-check:not([disabled])", function () {
+        runPsiCheck($(this).closest(".psi-slot"));
+      });
+
+      $(document).on("click", ".psi-refresh", function () {
+        runPsiCheck($(this).closest(".psi-slot"));
+      });
+
+      $(document).on("click", ".psi-tab", function () {
+        const $slot = $(this).closest(".psi-slot");
+        const cached = psiCacheGet($slot.data("url"));
+        if (!cached) {
+          $slot.html(buildPsiButton());
+          return;
+        }
+        $slot.html(buildPsiPanel(cached, $(this).data("psi-view")));
+      });
+
       $(document).ready(function () {
         let currentSearchTerm = "";
         let currentNicheFilter = "ALL";
@@ -260,6 +464,7 @@
                       <button onclick="downloadAsset('${fullUrl}', '${item.name}')" class="btn-action w-100">
                           <i class="bi bi-download me-2"></i> DOWNLOAD HTML
                       </button>
+                      <div class="psi-slot" data-url="${fullUrl}">${renderPsiSlot(fullUrl)}</div>
                     </div>
                   </div>
                 </div>
