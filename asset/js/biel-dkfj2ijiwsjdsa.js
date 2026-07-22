@@ -374,5 +374,13 @@ const pageData = [
     thema: "AMP",
     url: "amp/dingdong.html",
     date: "2026-07-21" // New field
+  },
+  {
+    name: "WhatsApp",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/wa.html",
+    date: "2026-07-22" // New field
   }
 ];
