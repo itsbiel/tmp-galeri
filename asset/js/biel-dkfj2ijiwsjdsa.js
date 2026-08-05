@@ -382,5 +382,13 @@ const pageData = [
     thema: "AMP",
     url: "amp/wa.html",
     date: "2026-07-22" // New field
+  },
+  {
+    name: "angkormeas.com",
+    type: "Landing Page",
+    niche: "Togel",
+    thema: "e-commerce",
+    url: "lp/angkormeas.html",
+    date: "2026-06-12" // New field
   }
 ];
