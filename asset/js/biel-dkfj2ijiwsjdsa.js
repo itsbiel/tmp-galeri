@@ -389,6 +389,6 @@ const pageData = [
     niche: "Togel",
     thema: "e-commerce",
     url: "lp/angkormeas.html",
-    date: "2026-06-12" // New field
+    date: "2026-08-05" // New field
   }
 ];
