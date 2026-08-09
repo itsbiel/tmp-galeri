@@ -84,6 +84,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap" media="print" onload="this.media = 'all'" />
+    <link rel="preload" as="image" href="https://itsbiel.github.io/asset/img/my-girl-toto.webp" fetchpriority="high" />
     <link href="https://rexus.id/cdn/shop/t/8/assets/t4s-base.css?v=180203407878897195091775619252" rel="stylesheet" type="text/css" media="all" />
     <style data-shopify>
       :root {
@@ -774,7 +775,7 @@
     </script>
     <!-- END app block -->
     <script src="https://cdn.shopify.com/extensions/f878ef65-22bc-4bdb-9187-9f02e2fe47ac/0.8.0/assets/the4.js" type="text/javascript" defer="defer"></script>
-    <link href="https://cdn.shopify.com/extensions/f878ef65-22bc-4bdb-9187-9f02e2fe47ac/0.8.0/assets/the4.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://cdn.shopify.com/extensions/f878ef65-22bc-4bdb-9187-9f02e2fe47ac/0.8.0/assets/the4.css" rel="stylesheet" media="print" onload="this.media='all'" />
     <script src="https://cdn.shopify.com/extensions/019fcbbe-9127-7daf-aa5f-93e19c578f65/ecomposer-136/assets/ecom.js" type="text/javascript" defer="defer"></script>
     <link href="https://monorail-edge.shopifysvc.com" rel="dns-prefetch" />
     <script>
@@ -824,7 +825,8 @@
     <script>
     (function(){
       var c=document.getElementById("koi-particles"),ctx=c.getContext("2d");
-      var particles=[],count=60,mouse={x:null,y:null};
+      var isMobile=window.innerWidth<768;
+      var particles=[],count=isMobile?20:60,mouse={x:null,y:null};
       function resize(){c.width=window.innerWidth;c.height=window.innerHeight}
       window.addEventListener("resize",resize);resize();
       window.addEventListener("mousemove",function(e){mouse.x=e.clientX;mouse.y=e.clientY});
@@ -846,20 +848,22 @@
           if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;
           ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
           ctx.fillStyle="rgba(213,25,25,"+p.o+")";ctx.fill();
-          for(var j=i+1;j<count;j++){
-            var p2=particles[j],dist=Math.hypot(p.x-p2.x,p.y-p2.y);
-            if(dist<120){
-              ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);
-              ctx.strokeStyle="rgba(213,25,25,"+(1-dist/120)*.15+")";
-              ctx.lineWidth=.5;ctx.stroke();
+          if(!isMobile){
+            for(var j=i+1;j<count;j++){
+              var p2=particles[j],dist=Math.hypot(p.x-p2.x,p.y-p2.y);
+              if(dist<120){
+                ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);
+                ctx.strokeStyle="rgba(213,25,25,"+(1-dist/120)*.15+")";
+                ctx.lineWidth=.5;ctx.stroke();
+              }
             }
-          }
-          if(mouse.x!==null){
-            var md=Math.hypot(p.x-mouse.x,p.y-mouse.y);
-            if(md<150){
-              ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mouse.x,mouse.y);
-              ctx.strokeStyle="rgba(255,45,45,"+(1-md/150)*.3+")";
-              ctx.lineWidth=.8;ctx.stroke();
+            if(mouse.x!==null){
+              var md=Math.hypot(p.x-mouse.x,p.y-mouse.y);
+              if(md<150){
+                ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mouse.x,mouse.y);
+                ctx.strokeStyle="rgba(255,45,45,"+(1-md/150)*.3+")";
+                ctx.lineWidth=.8;ctx.stroke();
+              }
             }
           }
         }
@@ -1516,7 +1520,7 @@
         </style>
       </div>
       <div id="shopify-section-announcement-bar" class="shopify-section t4-section t4-section-announcement-bar t4s_bk_flickity t4s_tp_cd">
-        <link href="https://rexus.id/cdn/shop/t/8/assets/pre_flickityt4s.min.css?v=131804973377617396431775619239" rel="stylesheet" type="text/css" media="all" />
+        <link href="https://rexus.id/cdn/shop/t/8/assets/pre_flickityt4s.min.css?v=131804973377617396431775619239" rel="stylesheet" media="print" onload="this.media='all'" />
         <style data-shopify>
           .t4s-announcement-bar {
             min-height: 41px;
@@ -2528,8 +2532,7 @@
                         <div data-t4s-gallery data-main-media data-t4s-thumb-true class="t4s-row t4s-g-0 t4s-slide-eff-fade flickityt4s t4s_ratioadapt t4s_position_8 t4s-flickity-slider t4s-slider-btn-true t4s-slider-btn-style-simple t4s-slider-btn-round t4s-slider-btn-medium t4s-slider-btn-cl-dark t4s-slider-btn-vi-always t4s-slider-btn-hidden-mobile-false" data-flickityt4s-js='{"t4sid": "template--19354050920501__main", "status": true, "cellSelector": "[data-main-slide]:not(.is--media-hide)","isFilter": false, "checkVisibility": false,"imagesLoaded": 0,"adaptiveHeight": 1, "contain": 1, "groupCells": "100%", "dragThreshold" : 6, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": 1,"pageDots": false, "autoPlay" : 0, "pauseAutoPlayOnHover" : true ,  "thumbNav": true, "thumbVertical": true, "isMedia": true }' style="--space-dots: 10px">
                           <div data-product-single-media-wrapper data-main-slide class="t4s-col-12 t4s-col-item t4s-product__media-item" data-media-id="26787854254133" data-nt-media-id="template--19354050920501__main-26787854254133" data-media-type="image" data-grname="" data-grpvl="">
                             <div data-t4s-gallery--open class="t4s_ratio t4s-bg-11 t4s-product__media is-pswp-disable" style="--aspect-ratioapt: 1; --mw-media: 1200px; background: url(https://itsbiel.github.io/asset/img/my-girl-toto.webp); background-size: contain; background-repeat: no-repeat; background-position: center">
-                              
-                              
+                              <img src="https://itsbiel.github.io/asset/img/my-girl-toto.webp" alt="KOITOTO Akses Resmi Bandar Toto Macau" width="1200" height="1200" fetchpriority="high" loading="eager" style="width:100%;height:100%;object-fit:contain" />
                             </div>
                           </div>
                           <div data-product-single-media-wrapper data-main-slide class="t4s-col-12 t4s-col-item t4s-product__media-item" data-media-id="26787854417973" data-nt-media-id="template--19354050920501__main-26787854417973" data-media-type="image" data-grname="" data-grpvl="">
@@ -4237,21 +4240,21 @@
       <link href="https://rexus.id/cdn/shop/t/8/assets/drawer.min.css?v=39635599430902121021775619207" rel="stylesheet" type="text/css" media="all" />
       <link href="https://rexus.id/cdn/shop/t/8/assets/qs-product.css?v=39346244172969017611775619240" rel="stylesheet" type="text/css" media="all"
     /></template>
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/drawer.min.css?v=39635599430902121021775619207" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/section.css?v=34720272243153622351775619243" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/footer.css?v=118027378399067463301775619211" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/general-block.css?v=125104416393710210421775619213" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/collection-products.css?v=54915084765069156271775619199" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/loading.css?v=61060566606983535421775619228" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/newsletter.css?v=59422309238344355301775619234" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/mini-cart.css?v=115048391162970946621775619233" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/mobile_nav.css?v=45722944099513079001775619234" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/login-sidebar.css?v=146680288148420321991775619229" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/search-hidden.css?v=99270908218130029631775619242" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/toolbar_mobile.css?v=156492644878755468491775619261" media="all" />
-    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/back-to-top.css?v=46849272193370311511775619188" media="all" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/drawer.min.css?v=39635599430902121021775619207" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/section.css?v=34720272243153622351775619243" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/footer.css?v=118027378399067463301775619211" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/general-block.css?v=125104416393710210421775619213" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/collection-products.css?v=54915084765069156271775619199" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/loading.css?v=61060566606983535421775619228" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/newsletter.css?v=59422309238344355301775619234" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/mini-cart.css?v=115048391162970946621775619233" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/mobile_nav.css?v=45722944099513079001775619234" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/login-sidebar.css?v=146680288148420321991775619229" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/search-hidden.css?v=99270908218130029631775619242" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/toolbar_mobile.css?v=156492644878755468491775619261" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/back-to-top.css?v=46849272193370311511775619188" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/t4s-theme.css?v=27484411955865788381775619256" media="print" onload="this.media = 'all'" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" media="print" onload="this.media = 'all'" /><link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/colors.css?v=111603181540343972631775619200" media="print" onload="this.media = 'all'" /><link href="https://rexus.id/cdn/shop/t/8/assets/custom.css?v=20298087601685538361775619297" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" media="print" onload="this.media = 'all'" /><link rel="stylesheet" href="https://rexus.id/cdn/shop/t/8/assets/colors.css?v=111603181540343972631775619200" media="print" onload="this.media = 'all'" /><link href="https://rexus.id/cdn/shop/t/8/assets/custom.css?v=20298087601685538361775619297" rel="stylesheet" media="print" onload="this.media='all'" />
     <style></style>
   </body>
 </html>
