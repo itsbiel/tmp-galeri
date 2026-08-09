@@ -88,6 +88,9 @@
     <style data-shopify>
       :root {
         /* CSS Variables */
+        --announcement-height2: 41px;
+        --topbar-height2: 0px;
+        --header-height2: 64px;
         --wrapper-mw: 1440px;
         --width-nt-stretch: 1200px;
         --padding-nt-stretch: 3rem/2;
@@ -816,10 +819,18 @@
       .t4s-section-main-product{background:transparent!important}
       .t4s-section-header{background:transparent!important}
       .t4s-header__wrapper{background:rgba(250,250,250,.95)!important}
+      .t4s-sub-menu{background:#fff!important}
       .t4s-pr_breadcrumbs .breadcrumb_pr_wrap{background:transparent!important}
       .t4s-rte,.t4s-tab-content,.t4s-tabs-pr-content{background:transparent!important}
       .t4s-product-extra,.t4s-pr-single_tab-content{background:transparent!important}
       #shopify-section-footer,#shopify-section-footer-bottom{background:rgba(255,255,255,.95)!important}
+      /* Prevent Flickity CLS - hide slides except first before init */
+      [data-t4s-gallery]:not(.flickity-enabled) [data-main-slide]:not(:first-child){display:none}
+      [data-t4s-gallery]:not(.flickity-enabled){min-height:50vw;max-height:600px}
+      @media(min-width:768px){[data-t4s-gallery]:not(.flickity-enabled){min-height:0;max-height:none}}
+      /* Prevent font-swap CLS */
+      .t4s-product__title{min-height:26px}
+      .t4s-product-price{min-height:24px}
     </style>
     <script>
     (function(){
@@ -3829,11 +3840,13 @@
         wis_icon_remove: '\u003csvg class="t4s-svg-wis is-ic--remove" viewBox="0 0 24 24"\u003e\u003cuse xlink:href="#t4s-icon-wis-remove"\u003e\u003c\/use\u003e\u003c\/svg\u003e',
       };
       !(function () {
+        requestAnimationFrame(function(){
         const t = document.documentElement.offsetWidth;
         t < 1025 &&
           [].forEach.call(document.querySelectorAll(".t4s-container-fluid >.t4s-row,.t4s-container >.t4s-row"), function (e) {
             e.offsetWidth > t && e.classList.add("t4s-fix-overflow");
           });
+        });
         const e = document.querySelector('#MainContent .t4s-section img[loading="lazy"]'),
           n = document.querySelector('#MainContent .t4s-section img.t4s-d-none.t4s-d-md-block[loading="lazy"]');
         function o(t) {
