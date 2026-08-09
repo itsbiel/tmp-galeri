@@ -390,5 +390,13 @@ const pageData = [
     thema: "e-commerce",
     url: "lp/angkormeas.html",
     date: "2026-08-05" // New field
+  },
+  {
+    name: "REXUS.ID",
+    type: "Landing Page",
+    niche: "Togel",
+    thema: "e-commerce",
+    url: "lp/rexusid.html",
+    date: "2026-08-09" // New field
   }
 ];
