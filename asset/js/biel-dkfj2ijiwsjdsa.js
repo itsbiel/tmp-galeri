@@ -398,5 +398,13 @@ const pageData = [
     thema: "e-commerce",
     url: "lp/rexusid.html",
     date: "2026-08-09" // New field
+  },
+  {
+    name: "YOUTUBE.COM",
+    type: "Landing Page",
+    niche: "SLOT",
+    thema: "Social Media",
+    url: "lp/tmp-youtube.html",
+    date: "2026-09-05" // New field
   }
 ];
