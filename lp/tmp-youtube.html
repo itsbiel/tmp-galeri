@@ -1450,40 +1450,39 @@
       /* FAQ */
       .bt-faq-box {
         margin-top: 16px;
-        background: #0a0a0a;
-        border: 1px solid #2a0a0a;
+        background: #111;
+        border: 1px solid rgba(229,57,53,.35);
         border-radius: 12px;
         padding: 16px;
-        position: relative;
-        overflow: hidden;
       }
-      .bt-faq-box::before {
-        content: '';
-        position: absolute;
-        top: -2px; left: -2px; right: -2px; bottom: -2px;
-        border-radius: 13px;
-        background: linear-gradient(135deg, #e53935 0%, transparent 30%, transparent 70%, #e53935 100%);
-        opacity: .25;
-        z-index: 0;
-        pointer-events: none;
+      .bt-faq-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
       }
-      .bt-faq-box > * { position: relative; z-index: 1; }
       .bt-faq-head h3 {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
         color: #fff;
-        margin: 0 0 4px;
+        margin: 0;
       }
       .bt-faq-head p {
         font-size: 11px;
-        color: #888;
-        margin: 0 0 12px;
+        color: #777;
+        margin: 0;
       }
       .bt-faq-item {
-        border-bottom: 1px solid #1a1a1a;
+        background: #1a1a1a;
+        border-radius: 8px;
+        margin-bottom: 6px;
+        transition: background .15s;
       }
       .bt-faq-item:last-child {
-        border-bottom: none;
+        margin-bottom: 0;
+      }
+      .bt-faq-item:hover {
+        background: #222;
       }
       .bt-faq-question {
         width: 100%;
@@ -1493,20 +1492,20 @@
         gap: 12px;
         background: none;
         border: none;
-        padding: 12px 0;
+        padding: 10px 12px;
         cursor: pointer;
         text-align: left;
         color: #ccc;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 500;
         line-height: 1.4;
       }
       .bt-faq-question:hover {
-        color: #e53935;
+        color: #fff;
       }
       .bt-faq-question i {
         font-style: normal;
-        font-size: 18px;
+        font-size: 16px;
         flex-shrink: 0;
         color: #e53935;
         transition: transform .2s;
@@ -1524,42 +1523,29 @@
       }
       .bt-faq-item.active .bt-faq-answer {
         max-height: 300px;
-        padding-bottom: 12px;
+        padding: 0 12px 10px;
       }
       .bt-faq-answer p {
         margin: 0;
-        font-size: 13px;
-        color: #888;
+        font-size: 12px;
+        color: #777;
         line-height: 1.6;
       }
 
       /* RTP Slot Gacor */
       .rtp-box {
         margin-top: 16px;
-        background: #0a0a0a;
-        border: 1px solid #2a0a0a;
+        background: #111;
+        border: 1px solid rgba(229,57,53,.35);
         border-radius: 12px;
         padding: 16px;
-        position: relative;
-        overflow: hidden;
       }
-      .rtp-glow {
-        position: absolute;
-        top: -2px; left: -2px; right: -2px; bottom: -2px;
-        border-radius: 13px;
-        background: linear-gradient(135deg, #e53935 0%, transparent 30%, transparent 70%, #e53935 100%);
-        opacity: .25;
-        z-index: 0;
-        pointer-events: none;
-      }
-      .rtp-box > *:not(.rtp-glow) { position: relative; z-index: 1; }
       .rtp-header {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
         gap: 8px;
-        margin-bottom: 12px;
-        flex-wrap: wrap;
+        margin-bottom: 14px;
       }
       .rtp-header-left {
         display: flex;
@@ -1567,8 +1553,8 @@
         gap: 10px;
       }
       .rtp-logo {
-        width: 40px; height: 40px;
-        background: #1a0a0a;
+        width: 36px; height: 36px;
+        background: linear-gradient(135deg, #c62828, #e53935);
         border-radius: 8px;
         display: flex;
         align-items: center;
@@ -1576,48 +1562,50 @@
         flex-shrink: 0;
       }
       .rtp-title {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 700;
         color: #fff;
         margin: 0;
       }
       .rtp-subtitle {
         font-size: 11px;
-        color: #888;
+        color: #777;
         margin: 2px 0 0;
       }
       .rtp-mode-btn {
-        background: none;
-        border: 1px solid #e53935;
+        background: rgba(229,57,53,.1);
+        border: 1px solid rgba(229,57,53,.3);
         color: #e53935;
         font-size: 10px;
-        font-weight: 700;
-        padding: 6px 10px;
-        border-radius: 20px;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 6px;
         cursor: pointer;
         white-space: nowrap;
-        letter-spacing: .5px;
       }
-      .rtp-mode-btn:hover { background: rgba(229,57,53,.15); }
+      .rtp-mode-btn:hover { background: rgba(229,57,53,.2); }
       .rtp-stats-bar {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+        display: flex;
+        gap: 0;
         margin-bottom: 12px;
+        background: #1a1a1a;
+        border-radius: 8px;
+        overflow: hidden;
       }
       .rtp-stat {
-        border: 1px solid #222;
-        border-radius: 8px;
-        padding: 8px;
+        flex: 1;
+        padding: 10px 8px;
         text-align: center;
+        border-right: 1px solid #262626;
       }
+      .rtp-stat:last-child { border-right: none; }
       .rtp-stat-label {
         display: block;
         font-size: 9px;
         color: #666;
-        letter-spacing: .5px;
         font-weight: 600;
-        margin-bottom: 4px;
+        letter-spacing: .3px;
+        margin-bottom: 3px;
       }
       .rtp-stat-value {
         display: block;
@@ -1629,16 +1617,14 @@
       .rtp-controls {
         display: flex;
         gap: 6px;
-        margin-bottom: 12px;
-        flex-wrap: wrap;
+        margin-bottom: 14px;
       }
       .rtp-search-wrap {
         flex: 1;
-        min-width: 120px;
         display: flex;
         align-items: center;
-        background: #111;
-        border: 1px solid #333;
+        background: #1a1a1a;
+        border: 1px solid #262626;
         border-radius: 8px;
         padding: 0 8px;
         gap: 6px;
@@ -1649,16 +1635,16 @@
         border: none;
         color: #fff;
         font-size: 12px;
-        padding: 8px 0;
+        padding: 7px 0;
         outline: none;
       }
       .rtp-search::placeholder { color: #555; }
       .rtp-provider-select {
-        background: #111;
-        border: 1px solid #333;
+        background: #1a1a1a;
+        border: 1px solid #262626;
         color: #fff;
         font-size: 11px;
-        padding: 8px;
+        padding: 7px 8px;
         border-radius: 8px;
         cursor: pointer;
         outline: none;
@@ -1668,153 +1654,106 @@
         border: none;
         color: #fff;
         font-size: 11px;
-        font-weight: 700;
-        padding: 8px 12px;
+        font-weight: 600;
+        padding: 7px 12px;
         border-radius: 8px;
         cursor: pointer;
         white-space: nowrap;
+        transition: background .2s;
       }
       .rtp-refresh-btn:hover { background: #c62828; }
-      .rtp-list-title {
-        font-size: 13px;
-        font-weight: 600;
-        color: #ccc;
-        margin: 0 0 10px;
-      }
       .rtp-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
       }
       .rtp-card {
-        border: 1px solid #2a1a1a;
-        border-radius: 10px;
-        padding: 12px;
-        background: #0d0d0d;
-        position: relative;
-        overflow: hidden;
-      }
-      .rtp-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #e53935, #ff5252, #e53935);
-      }
-      .rtp-card-head {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 8px;
+        gap: 10px;
+        padding: 10px 12px;
+        background: #1a1a1a;
+        border-radius: 8px;
+        transition: background .15s;
       }
+      .rtp-card:hover { background: #222; }
       .rtp-card-icon {
-        width: 32px; height: 32px;
-        border-radius: 6px;
-        background: #1a1a2e;
-        border: 1px solid #333;
+        width: 34px; height: 34px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #1a1a2e, #2a2a4e);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 800;
         color: #fff;
         flex-shrink: 0;
       }
+      .rtp-card-info {
+        flex: 1;
+        min-width: 0;
+      }
       .rtp-card-name {
         font-size: 12px;
-        font-weight: 700;
+        font-weight: 600;
         color: #fff;
-        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .rtp-card-provider {
-        font-size: 9px;
-        color: #888;
-        font-weight: 600;
-        letter-spacing: .3px;
+        font-size: 10px;
+        color: #666;
       }
-      .rtp-bar-wrap {
-        margin: 8px 0 6px;
+      .rtp-card-rtp {
+        text-align: right;
+        flex-shrink: 0;
+        min-width: 70px;
       }
       .rtp-bar-pct {
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 800;
         color: #4caf50;
-        display: inline;
       }
       .rtp-bar-track {
         width: 100%;
-        height: 6px;
-        background: #1a1a1a;
-        border-radius: 3px;
+        height: 4px;
+        background: #262626;
+        border-radius: 2px;
         margin-top: 4px;
         overflow: hidden;
       }
       .rtp-bar-fill {
         height: 100%;
-        border-radius: 3px;
-        background: linear-gradient(90deg, #f44336, #4caf50);
+        border-radius: 2px;
+        background: linear-gradient(90deg, #e53935, #4caf50);
         transition: width .6s ease;
       }
-      .rtp-badge {
-        display: inline-block;
-        font-size: 9px;
-        font-weight: 700;
-        padding: 2px 8px;
-        border-radius: 4px;
-        margin-left: 6px;
-        vertical-align: middle;
-      }
-      .rtp-badge-gacor {
-        background: rgba(76,175,80,.15);
-        color: #4caf50;
-        border: 1px solid #4caf50;
-      }
       .rtp-card-pola {
-        margin-top: 8px;
-        padding-top: 8px;
-        border-top: 1px solid #1a1a1a;
-      }
-      .rtp-pola-title {
-        font-size: 10px;
-        font-weight: 700;
-        color: #4caf50;
-        margin-bottom: 2px;
+        flex-shrink: 0;
+        text-align: right;
+        min-width: 80px;
       }
       .rtp-pola-detail {
-        font-size: 10px;
-        color: #888;
-      }
-      .rtp-dc {
-        float: right;
-        font-size: 10px;
-        font-weight: 700;
-        color: #4caf50;
-      }
-      .rtp-card-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 8px;
-        padding-top: 8px;
-        border-top: 1px solid #1a1a1a;
-      }
-      .rtp-updated {
         font-size: 9px;
-        color: #555;
+        color: #777;
+        line-height: 1.4;
       }
       .rtp-cek-btn {
         font-size: 10px;
-        font-weight: 700;
-        color: #fff;
-        background: #1a1a2e;
-        border: 1px solid #333;
-        padding: 4px 12px;
+        font-weight: 600;
+        color: #e53935;
+        background: rgba(229,57,53,.1);
+        border: 1px solid rgba(229,57,53,.2);
+        padding: 5px 10px;
         border-radius: 6px;
         cursor: pointer;
+        flex-shrink: 0;
+        transition: all .15s;
       }
       .rtp-cek-btn:hover {
-        background: #2a2a4e;
-        border-color: #555;
+        background: rgba(229,57,53,.2);
+        border-color: rgba(229,57,53,.4);
       }
       .rtp-disclaimer {
         font-size: 10px;
@@ -1823,8 +1762,11 @@
         line-height: 1.5;
       }
       @media (max-width: 700px) {
-        .rtp-grid { grid-template-columns: 1fr; }
-        .rtp-stats-bar { grid-template-columns: repeat(2, 1fr); }
+        .rtp-card { flex-wrap: wrap; gap: 6px; }
+        .rtp-card-rtp { min-width: auto; }
+        .rtp-card-pola { min-width: auto; text-align: left; }
+        .rtp-stats-bar { flex-wrap: wrap; }
+        .rtp-stat { min-width: 45%; }
       }
 
       /* Footer */
@@ -2382,61 +2324,52 @@
 
         <!-- RTP Slot Gacor -->
         <div class="rtp-box">
-          <div class="rtp-glow"></div>
           <div class="rtp-header">
             <div class="rtp-header-left">
               <div class="rtp-logo">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="#e53935"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="#e53935" stroke-width="1.5"/><rect x="6" y="8" width="4" height="8" rx="1" fill="#e53935"/><rect x="12" y="6" width="4" height="10" rx="1" fill="#ff5252"/><rect x="8" y="12" width="8" height="3" rx="1" fill="#ff8a80"/></svg>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
               </div>
               <div>
-                <h3 class="rtp-title">Mesin RTP Slot Gacor</h3>
-                <p class="rtp-subtitle">Pantau simulasi RTP live &amp; pola gacor setiap game slot.</p>
+                <h3 class="rtp-title">RTP Slot Gacor</h3>
+                <p class="rtp-subtitle">Simulasi RTP live · <span id="rtpTime" style="color:#e53935">--:--:--</span></p>
               </div>
             </div>
-            <a href="https://koitoto.com" class="rtp-mode-btn">MODE SIMULASI SLOT</a>
+            <a href="https://koitoto.com" class="rtp-mode-btn">LIVE</a>
           </div>
 
           <div class="rtp-stats-bar">
             <div class="rtp-stat">
-              <span class="rtp-stat-label">GAME TAMPIL</span>
+              <span class="rtp-stat-label">TAMPIL</span>
               <span class="rtp-stat-value" id="rtpGameCount">4 / 20</span>
             </div>
             <div class="rtp-stat">
-              <span class="rtp-stat-label">RATA-RATA RTP LIVE</span>
+              <span class="rtp-stat-label">RTP RATA-RATA</span>
               <span class="rtp-stat-value rtp-green" id="rtpAvg">97.0%</span>
             </div>
             <div class="rtp-stat">
-              <span class="rtp-stat-label">SLOT PALING GACOR</span>
+              <span class="rtp-stat-label">TOP GACOR</span>
               <span class="rtp-stat-value" id="rtpTopSlot">Bonanza Gold</span>
-            </div>
-            <div class="rtp-stat">
-              <span class="rtp-stat-label">PEMBARUAN</span>
-              <span class="rtp-stat-value" id="rtpTime">--:--:--</span>
             </div>
           </div>
 
           <div class="rtp-controls">
             <div class="rtp-search-wrap">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="#ff0000"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              <input type="text" class="rtp-search" placeholder="Cari nama game slot..." id="rtpSearch" />
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="#666"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <input type="text" class="rtp-search" placeholder="Cari game..." id="rtpSearch" />
             </div>
             <select class="rtp-provider-select" id="rtpProvider">
-              <option value="all">Semua Provider</option>
-              <option value="PRAGMATIC PLAY">Pragmatic Play</option>
+              <option value="all">Semua</option>
+              <option value="PRAGMATIC PLAY">Pragmatic</option>
               <option value="PG SOFT">PG Soft</option>
               <option value="HABANERO">Habanero</option>
               <option value="MICROGAMING">Microgaming</option>
             </select>
-            <button class="rtp-refresh-btn" id="rtpRefreshBtn">&#x21BB; Perbarui RTP</button>
+            <button class="rtp-refresh-btn" id="rtpRefreshBtn">&#x21BB;</button>
           </div>
 
-          <h4 class="rtp-list-title">Daftar RTP Live &amp; Pola Slot</h4>
+          <div class="rtp-grid" id="rtpGrid"></div>
 
-          <div class="rtp-grid" id="rtpGrid">
-            <!-- Rendered by JS -->
-          </div>
-
-          <p class="rtp-disclaimer">&triangle; Catatan: Persentase RTP dan Pola Spin pada dashboard ini merupakan simulasi visual semata. Bukan hasil analisis resmi server provider. Rotasi otomatis terjadi setiap 15 detik.</p>
+          <p class="rtp-disclaimer">Simulasi visual. Bukan data resmi provider. Rotasi otomatis setiap 15 detik.</p>
         </div>
       </aside>
     </main>
@@ -2583,7 +2516,7 @@
           { name: "Jungle King", abbr: "JK", provider: "MICROGAMING", rtp: 97.4, pola: "16x Turbo · 38x Cepat · 12x Manual" }
         ];
         var rtpPage = 0;
-        var rtpPerPage = 4;
+        var rtpPerPage = 10;
 
         function rtpNow() {
           var d = new Date();
@@ -2626,26 +2559,14 @@
 
           var html = "";
           showing.forEach(function(s) {
-            var badge = s.rtp >= 95 ? "SANGAT GACOR" : "GACOR";
             html += '<div class="rtp-card">';
-            html += '<div class="rtp-card-head">';
             html += '<div class="rtp-card-icon">' + s.abbr + '</div>';
-            html += '<div><div class="rtp-card-name">' + s.name + '</div>';
+            html += '<div class="rtp-card-info"><div class="rtp-card-name">' + s.name + '</div>';
             html += '<div class="rtp-card-provider">' + s.provider + '</div></div>';
-            html += '</div>';
-            html += '<div class="rtp-bar-wrap">';
-            html += '<span class="rtp-bar-pct">' + s.rtp.toFixed(1) + '%</span>';
-            html += '<span class="rtp-badge rtp-badge-gacor">' + badge + '</span>';
-            html += '<div class="rtp-bar-track"><div class="rtp-bar-fill" style="width:' + s.rtp + '%"></div></div>';
-            html += '</div>';
-            html += '<div class="rtp-card-pola">';
-            html += '<div class="rtp-pola-title">POLA MAIN GACOR <span class="rtp-dc">DC ON</span></div>';
-            html += '<div class="rtp-pola-detail">' + s.pola + '</div>';
-            html += '</div>';
-            html += '<div class="rtp-card-footer">';
-            html += '<span class="rtp-updated">Diperbarui ' + time + '</span>';
-            html += '<a href="https://koitoto.com" class="rtp-cek-btn">Cek Pola</a>';
-            html += '</div>';
+            html += '<div class="rtp-card-rtp"><div class="rtp-bar-pct">' + s.rtp.toFixed(1) + '%</div>';
+            html += '<div class="rtp-bar-track"><div class="rtp-bar-fill" style="width:' + s.rtp + '%"></div></div></div>';
+            html += '<div class="rtp-card-pola"><div class="rtp-pola-detail">' + s.pola.replace(/ · /g, '<br>') + '</div></div>';
+            html += '<a href="https://koitoto.com" class="rtp-cek-btn">Cek</a>';
             html += '</div>';
           });
           $("#rtpGrid").html(html);
