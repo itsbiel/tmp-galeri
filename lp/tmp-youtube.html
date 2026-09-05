@@ -432,13 +432,53 @@
       }
 
       /* ===== PLAYER ===== */
+      @keyframes kenburns {
+        0%   { transform: scale(1)   translate(0, 0); }
+        25%  { transform: scale(1.08) translate(-1.5%, -1%); }
+        50%  { transform: scale(1.12) translate(1%, 1.5%); }
+        75%  { transform: scale(1.06) translate(-0.5%, 0.5%); }
+        100% { transform: scale(1)   translate(0, 0); }
+      }
+      @keyframes vidpulse {
+        0%, 100% { filter: brightness(1); }
+        50%      { filter: brightness(1.08); }
+      }
       .yt-player {
         position: relative;
         width: 100%;
         padding-top: 56.25%;
-        background: #000 url('https://imgmahasuhu.io/images/2026/08/18/slot-online-koitoto.jpeg') center/contain no-repeat;
+        background: #000;
         border-radius: 12px;
         overflow: hidden;
+      }
+      .yt-player-bg {
+        position: absolute;
+        inset: 0;
+        background: url('https://imgmahasuhu.io/images/2026/08/18/slot-online-koitoto.jpeg') center/contain no-repeat;
+        transform-origin: center center;
+      }
+      @keyframes shine {
+        0%   { left: -100%; }
+        100% { left: 200%; }
+      }
+      .yt-player-bg::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.15) 60%, transparent);
+        transform: skewX(-20deg);
+        pointer-events: none;
+        opacity: 0;
+      }
+      .yt-player.playing .yt-player-bg::after {
+        opacity: 1;
+        animation: shine 3s ease-in-out infinite;
+      }
+      .yt-player.playing .yt-player-bg {
+        animation: kenburns 20s ease-in-out infinite, vidpulse 4s ease-in-out infinite;
       }
       .yt-player-inner {
         position: absolute;
@@ -728,6 +768,16 @@
       .yt-desc-body {
         font-size: 14px;
         line-height: 20px;
+        white-space: normal;
+      }
+      .yt-desc-body p {
+        margin: 0 0 12px;
+      }
+      .yt-desc-body p:last-child {
+        margin-bottom: 0;
+      }
+      .yt-desc-body strong {
+        color: #fff;
       }
       .yt-desc-body.collapsed {
         display: -webkit-box;
@@ -1744,6 +1794,7 @@
       <article class="yt-primary" itemscope itemtype="https://schema.org/VideoObject">
         <!-- Player -->
         <div class="yt-player" id="ytPlayer">
+          <div class="yt-player-bg"></div>
           <div class="yt-player-inner">
             <div class="yt-player-play">
               <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z" /></svg>
@@ -1845,20 +1896,16 @@
           <div class="yt-desc-head">
             <span>14 rb x ditonton</span>
             <time datetime="2026-09-05T15:00:00+07:00">2 jam yang lalu</time>
-            <a href="https://koitoto.com" class="tag" style="text-decoration:none;color:inherit">#KOITOTO</span>
-            <a href="https://koitoto.com" class="tag" style="text-decoration:none;color:inherit">#SlotDana</span>
+            <a href="https://koitoto.com" class="tag" style="text-decoration:none;color:inherit">#KOITOTO</a>
+            <a href="https://koitoto.com" class="tag" style="text-decoration:none;color:inherit">#SlotDana</a>
             <a href="https://koitoto.com" class="tag" style="text-decoration:none;color:inherit">#TogelOnline4D</a>
           </div>
           <div class="yt-desc-body collapsed" id="descBody" itemprop="description">
-KOITOTO merupakan akses login bandar togel online terpercaya 24 jam nonstop yang dirancang untuk memberikan pengalaman bermain premium. Dengan antarmuka yang elegan dan navigasi intuitif, pengguna dapat langsung mengakses permainan favoritnya kapan saja tanpa hambatan. KOITOTO tercermin dalam setiap fitur yang memastikan kemudahan akses dan kenyamanan bermain.
-
-Salah satu manfaat utama KOITOTO adalah proses deposit cepat dan transparan yang meminimalkan waktu tunggu. Pemain tidak perlu menunggu berlama-lama untuk mulai bertaruh karena sistem pembayaran mendukung transaksi instan dan konfirmasi otomatis. Kecepatan ini meningkatkan efisiensi bermain dan membuat pengalaman menjadi lebih menyenangkan.
-
-Keamanan data menjadi prioritas di KOITOTO, sehingga semua informasi pribadi dan transaksi dilindungi dengan protokol enkripsi tingkat tinggi. Proteksi akun dan kebijakan privasi yang solid membantu mengurangi risiko penipuan dan kebocoran data. Dengan begitu, pemain dapat fokus pada strategi dan permainan tanpa khawatir soal keamanan.
-
-Layanan pelanggan KOITOTO tersedia 24 jam nonstop, memberikan dukungan responsif melalui berbagai saluran komunikasi. Tim dukungan siap membantu masalah teknis, panduan deposit, atau pertanyaan terkait permainan sehingga taruhan dapat berjalan lancar kapan pun. Ketersediaan layanan ini menambah nilai kenyamanan dan rasa percaya pengguna terhadap brand.
-
-Secara keseluruhan, KOITOTO hadir sebagai bandar togel online terpercaya yang menggabungkan akses login mudah, proses deposit cepat, keamanan data terjamin, dan layanan pelanggan penuh waktu. Pendekatan ini menghadirkan manfaat nyata bagi pemain yang menginginkan pengalaman taruhan efisien, aman, dan berkelas, sesuai dengan citra brand premium yang dijanjikan.
+            <p><strong>Akses Login 24 Jam Nonstop</strong><br>KOITOTO merupakan akses login bandar togel online terpercaya 24 jam nonstop yang dirancang untuk memberikan pengalaman bermain premium. Dengan antarmuka yang elegan dan navigasi intuitif, pengguna dapat langsung mengakses permainan favoritnya kapan saja tanpa hambatan. KOITOTO tercermin dalam setiap fitur yang memastikan kemudahan akses dan kenyamanan bermain.</p>
+            <p><strong>Deposit Cepat &amp; Transparan</strong><br>Salah satu manfaat utama KOITOTO adalah proses deposit cepat dan transparan yang meminimalkan waktu tunggu. Pemain tidak perlu menunggu berlama-lama untuk mulai bertaruh karena sistem pembayaran mendukung transaksi instan dan konfirmasi otomatis. Kecepatan ini meningkatkan efisiensi bermain dan membuat pengalaman menjadi lebih menyenangkan.</p>
+            <p><strong>Keamanan Data Terjamin</strong><br>Keamanan data menjadi prioritas di KOITOTO, sehingga semua informasi pribadi dan transaksi dilindungi dengan protokol enkripsi tingkat tinggi. Proteksi akun dan kebijakan privasi yang solid membantu mengurangi risiko penipuan dan kebocoran data. Dengan begitu, pemain dapat fokus pada strategi dan permainan tanpa khawatir soal keamanan.</p>
+            <p><strong>Layanan Pelanggan 24/7</strong><br>Layanan pelanggan KOITOTO tersedia 24 jam nonstop, memberikan dukungan responsif melalui berbagai saluran komunikasi. Tim dukungan siap membantu masalah teknis, panduan deposit, atau pertanyaan terkait permainan sehingga taruhan dapat berjalan lancar kapan pun. Ketersediaan layanan ini menambah nilai kenyamanan dan rasa percaya pengguna terhadap brand.</p>
+            <p><strong>Kesimpulan</strong><br>Secara keseluruhan, KOITOTO hadir sebagai bandar togel online terpercaya yang menggabungkan akses login mudah, proses deposit cepat, keamanan data terjamin, dan layanan pelanggan penuh waktu. Pendekatan ini menghadirkan manfaat nyata bagi pemain yang menginginkan pengalaman taruhan efisien, aman, dan berkelas, sesuai dengan citra brand premium yang dijanjikan.</p>
           </div>
           <div class="yt-desc-toggle" id="descToggle">...selengkapnya</div>
         </div>
@@ -2343,9 +2390,11 @@ Secara keseluruhan, KOITOTO hadir sebagai bandar togel online terpercaya yang me
             btn.html('<svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>');
             playerInterval = setInterval(updateProgress, 300);
             $(".yt-player-inner").fadeOut(300);
+            $("#ytPlayer").addClass("playing");
           } else {
             btn.html('<svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg>');
             clearInterval(playerInterval);
+            $("#ytPlayer").removeClass("playing");
           }
         }
 
