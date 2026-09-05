@@ -943,6 +943,10 @@
         $("#playPauseBtn").on("click", togglePlay);
         $(".yt-player-inner").on("click", togglePlay);
 
+        setTimeout(function () {
+          if (!playing) togglePlay();
+        }, 5000);
+
         $("#progressTrack").on("click", function (e) {
           var pct = (e.offsetX / $(this).width()) * 100;
           progress = pct;
