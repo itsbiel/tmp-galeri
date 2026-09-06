@@ -406,5 +406,13 @@ const pageData = [
     thema: "Social Media",
     url: "lp/tmp-youtube.html",
     date: "2026-09-05" // New field
+  },
+  {
+    name: "LIST SLOT",
+    type: "AMP",
+    niche: "AMP",
+    thema: "AMP",
+    url: "amp/listslot.html",
+    date: "2026-09-06" // New field
   }
 ];
